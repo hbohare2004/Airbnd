@@ -126,7 +126,7 @@ footer::before {
 }
 
 .f-info-socials i:hover {
-    color: #00cec9;
+    color: #6eeeec;
     transform: scale(1.2) rotate(5deg);
 }
 
@@ -314,7 +314,7 @@ footer div {
 .form-control {
     border-radius: 10px;
     padding: 10px 12px;
-    border: 1.8px solid #dcdde1;
+    border: 1.8px solid #cbced6;
     transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
 }
 
@@ -376,7 +376,7 @@ textarea.form-control {
     }
 }
 
-/* Edit Container Enhancements */
+/* Edit Container Enhancement */
 .edit-container {
     background: #ffffff;
     padding: 30px 35px;
@@ -625,7 +625,7 @@ html {
     scroll-behavior: smooth;
 }
 
-/* Selection Style */
+/* Selection Styling */
 ::selection {
     background: #ffeaa7;
     color: #2d3436;
