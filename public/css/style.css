@@ -120,13 +120,13 @@ footer::before {
 .f-info-socials i {
     margin-right: 12px;
     cursor: pointer;
-    color: #dcdde1;
+    color: #ebedf5;
     transition: transform 0.3s ease, color 0.3s ease;
     display: inline-block;
 }
 
 .f-info-socials i:hover {
-    color: #00cec9;
+    color: #53e2e0;
     transform: scale(1.2) rotate(5deg);
 }
 
@@ -615,6 +615,7 @@ input[name="listing[country]"]:focus {
 }
 
 /* Loading Animation for Page Transitions */
+
 @keyframes pulse {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.5; }
