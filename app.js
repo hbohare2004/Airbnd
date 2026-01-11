@@ -64,6 +64,7 @@ if (typeof createStoreFn === 'function') {
   });
 } else if (typeof MongoStore === 'function') {
   // Older connect-mongo exported a constructor
+  
   try {
     store = new MongoStore({ mongoUrl: dbUrl });
   } catch (e) {
