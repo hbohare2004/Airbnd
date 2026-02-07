@@ -1,31 +1,20 @@
 /* ============================================
-   STAR RATING SYSTEM - ENHANCED VERSION
-   Features:
-   - CSS Custom Properties for easy theming
-   - Accessible ARIA labels and roles
-   - Responsive scaling
-   - Smooth animations
-   - Reduced motion support
-   - Better code organization
+   STAR RATING SYSTEM - v3.0
+   Aligned with Nivasa "Warm Hearth" Theme
 ============================================ */
 
-/* CSS Custom Properties for easy customization */
 :root {
   --star-size: 30px;
   --star-width: 150px;
   --star-count: 5;
   --star-spacing: 0px;
-  --star-inactive-color: #ddd;
-  --star-active-color: #ffd700;
-  --star-hover-color: #ffed85;
-  --star-outline: 2px solid #999;
-  --star-transition-duration: 0.3s;
-  --star-transition-timing: ease-in-out;
-  --star-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  --star-border-radius: 2px;
+  --star-inactive-color: #E8E4DF;
+  --star-active-color: #E8B85E;
+  --star-hover-color: #F0C97A;
+  --star-transition: 300ms ease;
 }
 
-/* Base star container styles */
+/* Base container */
 .starability-result,
 .starability-slot {
   --single-star-width: calc(var(--star-width) / var(--star-count));
@@ -37,29 +26,27 @@
   user-select: none;
 }
 
-/* Result display (read-only stars) */
+/* Read-only stars */
 .starability-result {
   display: inline-block;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23ddd' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23E8E4DF' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-size: var(--single-star-width) var(--star-size);
   overflow: hidden;
 }
 
-/* Active star overlay for results */
 .starability-result::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23ffd700' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23E8B85E' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
   background-repeat: repeat-x;
   background-size: var(--single-star-width) var(--star-size);
-  transition: width var(--star-transition-duration) var(--star-transition-timing);
+  transition: width var(--star-transition);
 }
 
-/* Rating levels for results */
 .starability-result[data-rating="5"]::after { width: 100%; }
 .starability-result[data-rating="4"]::after { width: 80%; }
 .starability-result[data-rating="3"]::after { width: 60%; }
@@ -67,7 +54,7 @@
 .starability-result[data-rating="1"]::after { width: 20%; }
 .starability-result[data-rating="0"]::after { width: 0%; }
 
-/* Interactive star rating slot */
+/* Interactive rating */
 .starability-slot {
   display: flex;
   flex-direction: row-reverse;
@@ -78,7 +65,6 @@
   background: transparent;
 }
 
-/* Hide radio inputs but keep them accessible */
 .starability-slot > input {
   position: absolute;
   width: 1px;
@@ -92,76 +78,41 @@
   opacity: 0;
 }
 
-/* Star labels */
 .starability-slot > label {
   position: relative;
   display: block;
   width: var(--single-star-width);
   height: var(--star-size);
   cursor: pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23ddd' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23E8E4DF' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  transition: transform var(--star-transition-duration) var(--star-transition-timing);
-  filter: drop-shadow(var(--star-shadow));
+  transition: transform var(--star-transition);
 }
 
-/* Hover effects */
 .starability-slot > label:hover,
 .starability-slot > label:hover ~ label {
   transform: scale(1.1);
 }
 
-/* Active star color */
 .starability-slot > input:checked ~ label,
-.starability-slot > input:checked + label,
-.starability-slot:hover > input:checked ~ label,
-.starability-slot:hover > input:checked + label {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23ffd700' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
+.starability-slot > input:checked + label {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23E8B85E' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
 }
 
-/* Hover preview color */
 .starability-slot > input:not(:checked):hover ~ label,
 .starability-slot > input:not(:checked):hover + label {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23ffed85' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23F0C97A' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
 }
 
-/* Focus states for accessibility */
 .starability-slot > input:focus-visible + label {
-  outline: var(--star-outline);
+  outline: 2px solid var(--color-primary, #E07A5F);
   outline-offset: 2px;
-  border-radius: var(--star-border-radius);
+  border-radius: 2px;
 }
 
-/* Disabled state */
-.starability-slot[disabled],
-.starability-slot[disabled] > label {
-  cursor: not-allowed;
-  opacity: 0.6;
-  filter: grayscale(0.5);
-}
-
-/* Focus ring for keyboard navigation */
-.starability-slot > .input-no-rate:focus ~ .starability-focus-ring {
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  border: 2px dotted #999;
-  border-radius: var(--star-border-radius);
-  pointer-events: none;
-  animation: focus-pulse 2s infinite;
-}
-
-/* Animation for focus ring */
-@keyframes focus-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* Responsive adjustments */
+/* Responsive */
 @media (max-width: 768px) {
   :root {
     --star-size: 25px;
@@ -176,93 +127,19 @@
   }
 }
 
-/* High DPI displays */
-@media screen and (-webkit-min-device-pixel-ratio: 2), 
-       screen and (min-resolution: 192dpi) {
-  .starability-result,
-  .starability-slot > label {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='%23ddd' d='M30 4l8.6 17.4 19.4 2.8-14 13.6 3.4 19.2-17.4-9.2-17.4 9.2 3.4-19.2-14-13.6 19.4-2.8z'/%3E%3C/svg%3E");
-  }
-  
-  .starability-result::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath fill='%23ffd700' d='M30 4l8.6 17.4 19.4 2.8-14 13.6 3.4 19.2-17.4-9.2-17.4 9.2 3.4-19.2-14-13.6 19.4-2.8z'/%3E%3C/svg%3E");
-  }
-}
-
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .starability-result::after,
   .starability-slot > label {
     transition: none;
   }
-  
   .starability-slot > label:hover,
   .starability-slot > label:hover ~ label {
     transform: none;
   }
-  
-  @keyframes focus-pulse {
-    0%, 100% { opacity: 1; }
-  }
 }
 
-/* High contrast mode support */
-@media screen and (-ms-high-contrast: active) {
-  .starability-result,
-  .starability-slot > label {
-    background-image: none !important;
-  }
-  
-  .starability-slot {
-    width: auto;
-    flex-direction: row;
-  }
-  
-  .starability-slot > input {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    opacity: 1;
-    clip: auto;
-  }
-  
-  .starability-slot > label {
-    width: auto;
-    height: auto;
-    font-size: 1em;
-    color: inherit;
-    background: none;
-  }
-  
-  .starability-slot .input-no-rate {
-    display: none;
-  }
-}
-
-/* RTL language support */
-[dir="rtl"] .starability-result::after,
-[dir="rtl"] .starability-result {
-  transform: scaleX(-1);
-}
-
-[dir="rtl"] .starability-slot {
-  flex-direction: row;
-  justify-content: flex-start;
-}
-
-/* Print styles */
-@media print {
-  .starability-slot > label {
-    filter: none;
-  }
-  
-  .starability-result::after {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Cpath fill='%23000' d='M15 2l4.3 8.7 9.7 1.4-7 6.8 1.7 9.6-8.7-4.6-8.7 4.6 1.7-9.6-7-6.8 9.7-1.4z'/%3E%3C/svg%3E");
-  }
-}
-
-/* Optional: Half-star support */
+/* Half-star support */
 .starability-result.half[data-rating="0.5"]::after { width: 10%; }
 .starability-result.half[data-rating="1.5"]::after { width: 30%; }
 .starability-result.half[data-rating="2.5"]::after { width: 50%; }
